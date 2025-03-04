@@ -5,8 +5,72 @@ body, html {
     flex-direction: column;
 }
 
+.target {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+}
+
+.shark-title {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+container {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: end;
+    height: 500px;
+    width: 100%; 
+    color: white;
+}
+
+.create-structure {
+    background-color: bisque;
+    padding: 5rem 10rem;
+}
+
+container .right-bar{
+    background-color: rgba(0, 0, 0, 0.3); /* Red color with 50% opacity */
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    padding:0.5rem;
+    padding-right:5rem;
+    
+}
+
+container .right-bar p {
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Reduce line-height */
+}
+
+container .right-bar .title{
+    color:aqua;
+    font-weight: bolder;
+    margin-bottom: 0.2rem;
+}
+
+container .right-bar .content{
+    color:rgb(255, 255, 255);
+    font-weight: bolder;
+    margin-bottom: 2rem;
+}
+
+
 main {
     flex:1;
+    height: 100vh;
 }
 
 a {
@@ -52,3 +116,4 @@ a:hover {
     color:red !important;
     font-size: 100rem;
 }
+
