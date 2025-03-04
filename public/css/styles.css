@@ -1,3 +1,54 @@
+body, html {
+    height: 100vh;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex:1;
+}
+
+a {
+    color: rgb(3, 255, 255) !important;
+}
+
+a:hover {
+    color: rgb(255, 255, 255) !important;
+}
+
 .shark {
-    color: teal !important;
+    color: rgb(3, 255, 255) !important;
+}
+
+.cover {
+    background-image: url('/images/sharks/GreatWhite.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem;
+}
+
+.cover .shadow-text {
+    color: white; /* Set the text color to white */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a shadow effect to the text */
+    font-size: 3.5rem; /* Adjust the font size as needed */
+}
+
+.intro {
+    color:black;
+    font-weight: bolder;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.thumb .lnk {
+    color:red !important;
+    font-size: 100rem;
 }
