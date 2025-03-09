@@ -8,6 +8,7 @@ router.get(routes.home, homeController.home);
 router.get(routes.pageNotFound, homeController.missing_page);
 
 router.get(routes.article, articleController.dynamic);
+router.get(routes.gallery, articleController.gallery);
 router.get(routes.createEntry, articleController.create);
 router.post(routes.firebasePost, articleController.firebasePost);
 

@@ -1,8 +1,10 @@
-body, html {
+body{
     height: 100vh;
     margin:0;
     display: flex;
+    align-items: center;
     flex-direction: column;
+    width:100%;
 }
 
 .target {
@@ -69,8 +71,15 @@ container .right-bar .content{
 
 
 main {
+    display: flex;
+    flex-direction: column;
     flex:1;
     height: 100vh;
+}
+
+main .content {
+    flex-grow: 1;
+    background-color: bisque;
 }
 
 a {
@@ -86,7 +95,7 @@ a:hover {
 }
 
 .cover {
-    background-image: url('/images/sharks/GreatWhite.jpg');
+    background-image: url('/images/sharks/GreatWhiteDiving.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -94,6 +103,7 @@ a:hover {
     justify-content: center;
     align-items: center;
     padding: 10rem;
+    padding-bottom: 15rem;
 }
 
 .cover .shadow-text {

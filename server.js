@@ -20,6 +20,8 @@ app.use(removeTrailingSlash);
 app.use(routes.home, indexRouter);
 app.use(routes.article, indexRouter);
 app.use(routes.createEntry, indexRouter);
+app.use(routes.gallery, indexRouter);
+app.use(routes.pageNotFound, indexRouter);
 app.use(routes.firebasePost, indexRouter);
 app.use(routes.pageNotFound, indexRouter);
 

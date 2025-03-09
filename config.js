@@ -5,6 +5,7 @@ const routes = {
     createEntry: '/article',
     firebasePost: '/firebase-post',
     pageNotFound: '/missing_page',
+    gallery: '/gallery',
 };
 
 module.exports = routes;

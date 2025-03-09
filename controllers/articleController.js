@@ -85,3 +85,29 @@ exports.firebasePost = async (req,res) => {
         res.status(500).send("Error adding document");
     }
 }
+
+
+exports.gallery = async (req,res) => {
+    const sharks = [];
+    try {
+        const sharksCollection = await db.collection('sharks').get();
+        if (sharksCollection.empty) {
+          console.log('No matching documents.');
+          return [];
+        }
+    
+        sharksCollection.forEach(doc => {
+          sharks.push({ id: doc.id, ...doc.data() });
+        });
+    
+      } catch (error) {
+        console.error('Error retrieving sharks collection: ', error);
+        throw new Error('Error retrieving sharks collection');
+      }
+
+    console.log(sharks);
+    res.render('gallery', { 
+        sharks: sharks,
+        title: 'Home' 
+    });
+}
