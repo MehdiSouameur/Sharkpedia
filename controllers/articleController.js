@@ -1,0 +1,87 @@
+const axios = require("axios")
+const sharp = require("sharp");
+const routes = require("../config.js");
+const { db, storage } = require("../firebaseConfig")
+
+// Dynamically route to shark article
+exports.dynamic = async (req, res) => {
+    try {
+        const shark_id = req.params.id.replace(/_/g, ' ');
+
+        const querySnapshot = await db.collection('sharks')
+            .where('shark_name', '==', shark_id)
+            .get();
+
+        if (querySnapshot.empty) {
+            return res.redirect(routes.pageNotFound);
+        }
+
+        const doc = querySnapshot.docs[0]; 
+        const entry = doc.data();
+
+        console.log(entry); 
+
+        const response = await axios.get(entry.shark_image_url, { responseType: 'arraybuffer' });
+        const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+
+        res.render("dynamic_article", {
+            shark_name: entry.shark_name,
+            scientific_name: entry.science_name,
+            shark_image_base64: base64Image,
+        });
+
+    } catch (error) {
+        console.error('Error retrieving document: ', error);
+        res.status(500).send('Error retrieving document');
+    }
+};
+
+// Create an entry page
+exports.create = (req,res) => {
+    res.render("create_entry");
+}
+
+// Upload entry to firebase
+exports.firebasePost = async (req,res) => {
+    try {
+        const { shark_name, science_name, shark_content, shark_image_name } = req.body;
+
+        // Upload image to Storage and get the url
+        let shark_image_url = "";
+        if (req.files && req.files.shark_image) {
+            const sharkImage = req.files.shark_image;
+            const fileName = sharkImage.name;
+            const firebasefile = storage.file(fileName);
+
+            await firebasefile.save(sharkImage.data, {
+                metadata: {
+                    contentType: sharkImage.mimetype,
+                },
+            });
+
+            // Get download URL
+            const [url] = await firebasefile.getSignedUrl({
+                action: 'read',
+                expires: '2100-01-01T00:00:00Z'
+            });
+
+            shark_image_url = url;
+
+        } else {
+            console.log('No file uploaded.');
+        }
+
+        const docRef = await db.collection('sharks').add({
+            shark_name,
+            science_name,
+            shark_content,
+            shark_image_url
+        });
+
+        console.log("Document written with ID: ", docRef.id);
+        res.redirect('/');
+    } catch (e) {
+        console.error("Error adding document: ", e);
+        res.status(500).send("Error adding document");
+    }
+}

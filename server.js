@@ -1,28 +1,27 @@
 const express = require("express");
-
+const routes = require("./config.js");
+const indexRouter = require('./routes/index');
+const removeTrailingSlash = require('./middleware/trailingSlash'); 
 const app = express();
 const PORT = 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Middleware
+const fileUpload = require("express-fileupload");
+app.use(fileUpload())
+app.use(removeTrailingSlash);
 
 
-app.get("/", (req,res) => {
-    res.render("index");
-})
-
-app.get("/article", (req,res) => {
-    res.render("article");
-})
-
-app.get("/create-entry", (req,res) => {
-    res.render("create-entry");
-})
-
-app.get("/checkout", (req,res) => {
-    res.render("checkout");
-})
+app.use(routes.home, indexRouter);
+app.use(routes.article, indexRouter);
+app.use(routes.createEntry, indexRouter);
+app.use(routes.firebasePost, indexRouter);
+app.use(routes.pageNotFound, indexRouter);
 
 app.listen(PORT, () => {
     console.log(`App running on http://localhost:${PORT}`);

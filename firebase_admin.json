@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sharkpedia-d4531",
+  "private_key_id": "48a38af8b4831ba73186bbe0869d4cf3c500c792",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCiMgOt+FY5fYOJ\nVjz2LU/EDRH48TfWupgMR69y7cQDJAUoarg3A4+WLDkPPObDQwZ9pSrG8oZa+B9F\nU6NZi8qSWVZ0jTUQjVSZb13QsEXYzZCJXm5PmvOML1ImOUpyyqxg/wud/ybUQTN2\njaRcLppLrx59KC/9tpZqCQ3iXAjhqqD1nquLEMX+UgcI78DZL1UT7CKegxfDjQsd\nenrkRWHQvDBtM03O3HNDko917LfcwOqy5PHFsAJ2W07zrxnMqIUrrwDXNH47IvDh\ni5LJ4+KHelm2sZC60uBMRCwUyUWpRhvCPXLqr/j1NqQAtoxNfDi2xLM9zKaTxxQd\nKAYIT9/5AgMBAAECggEAH4lff0hZxZhixsWamVgymgFblP6b95e04DBhDBTwh5bN\nnO/xLRs3ZEDpgE28ZcuGu8/tWx0FZDM561IpoQvmAaI2xfc90d/VCvdlM6JOlmrT\n123hv382qzN5Qt7hW6QOM9brZJdbrqoVzk+YnWbfT+d3I2k4uZlysh/cD/8KqAvk\nlcZTp7RRrFGEDMlGLisE5YxXZAryUbBRDutvPBA0NsccvL6JQW+UMtNJReGxu7rz\n0gKLxUPpVUZDLSM3uncMfhNUf744zIqmaNdiCLH+uCxWNHbIA3c+yIErqFb1qz7e\n0YbjdT/w4vgf98AWRubdiX0OJxuNFH/93h/E7r7uXQKBgQDY+TfxjboSbck2zxxK\neGKPuWsk5T6nBtA3YUHsNEzaNeKCBtfbqk7LhQyOhclDcpJPWGl0BsGbDCEdhysJ\n6QqDumW/6iqolo6U4SOWvsDlszVO+HzYTWFjB7cuCKJLJN3sTYtEQ5NzD1Cwsd7R\n2m3y+UUebcqPGH7qoVCPWxySzQKBgQC/XnoIxsACh6+ieF6I/M274oR3xuQ7m17j\nEbA256GI+fRDzQk2i/qvalt4sgBQtisPWl/kY4DyiyM58GC05LtNcemZa5cLmAtj\nQlw+mYC6hOx2lZWjrLx5h/QBPx91tD7CQSV1R+mjQZKzByk2VCeaGG7orevwWwVq\niZNJmsu53QKBgHyYUHnTyyA+Dyf8MuDI1MB314Eua5X6oaLLpNGBDwjXnKTSTS6F\nVA4m7xkA1px2tHH/8T6BirgAdRvBvQNJ4ZHXfgqA69I38tSnnIo6LAc7q8cXhomn\nld8KVTSIHLpOB2pk9S5UJ94Q02NEIRIc/rpiTkC1B3a4uFkAHYTU60mZAoGAEOUs\nbP3vEcoc7YEnB30aRM4418JNgB21gOKc5hwJHOjEcf/2IkS1eysurDc64+VRY+ec\ns7M9PSyfjYv1XcMb7jhyYUMocLOZvcesETLINK9rmQSX0316nlgsaLfD9UZWjBvo\nTLRuoiU16GxnbQ58+JPTpuNEA1Jl5gQDZuottlkCgYEAkwnjdwLeN1i4GubmNYgJ\nHUqiQ8HLybUCt/Sks2ksYPYP4OQCSBZVHMGWjD5s7EjsJK61PySX40gTfZA0FBgs\nwAvtn0synrd5JcTcsQWL1XnWwjxzuju/8mg4C+OXTkwxoks9VnPT4Cm7ESD2PgWo\nLmW7QKjtJsd9ryXzW33ccvY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@sharkpedia-d4531.iam.gserviceaccount.com",
+  "client_id": "105827155446919269625",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40sharkpedia-d4531.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

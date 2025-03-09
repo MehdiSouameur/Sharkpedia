@@ -9,7 +9,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google-cloud/firestore": "^7.11.0",
+    "axios": "^1.8.1",
     "ejs": "^3.1.10",
-    "express.js": "^1.0.0"
+    "express-fileupload": "^1.5.1",
+    "express.js": "^1.0.0",
+    "firebase": "^11.4.0",
+    "firebase-admin": "^13.1.0",
+    "fs": "^0.0.1-security",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.33.5"
   }
 }

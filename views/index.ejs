@@ -27,48 +27,19 @@
         </div>
         <div>
             <div id="main">
-                <article class="thumb">
-                    <a href="images/sharks/GreatWhite2.jpg" class="image"><img src="images/sharks/GreatWhite2.jpg" alt="" /></a>
-                    <h2>Great White Shark</h2>
-                    <p>Carcharodon carcharias</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/BullShark.jpg" class="image"><img src="images/sharks/BullShark.jpg" alt="" /></a>
-                    <h2>Bull Shark</h2>
-                    <p>Carcharhinus leucas</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/TigerShark.jpg" class="image"><img src="images/sharks/TigerShark.jpg" alt="" /></a>
-                    <h2>Tiger Shark</h2>
-                    <p>Galeocerdo cuvier</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/OceanicWhitetip.jpg" class="image"><img src="images/sharks/OceanicWhitetip.jpg" alt="" /></a>
-                    <h2>Oceanic Whitetip</h2>
-                    <p>Carcharhinus longimanus</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/Greynurseshark.jpg" class="image"><img src="images/sharks/Greynurseshark.jpg" alt="" /></a>
-                    <h2>Grey Nurse Shark</h2>
-                    <p>Carcharias taurus</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/Leopardshark.jpg" class="image"><img src="images/sharks/Leopardshark.jpg" alt="" /></a>
-                    <h2>Leopard Shark</h2>
-                    <p>Triakis semifasciata</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/Baskingshark.jpg" class="image"><img src="images/sharks/Baskingshark.jpg" alt="" /></a>
-                    <h2>Basking Shark</h2>
-                    <p>Cetorhinus Maximus</p>
-                </article>
-                <article class="thumb">
-                    <a href="images/sharks/Whaleshark.jpg" class="image"><img src="images/sharks/Whaleshark.jpg" alt="" /></a>
-                    <h2>Whale Shark</h2>
-                    <p>Rhincodon Typus</p>
-                    <a>READ MORE</a>
+
+                <% sharks.forEach(shark => { %>
+                    <article class="thumb">
+                        <a href= <%= shark.shark_image_url %>   class="image">
+                            <img src=<%= shark.shark_image_url %> alt="" />
+                        </a>
+                        <h2><%= shark.shark_name %></h2>
+                        <p><%= shark.science_name %></p>
+                        <a href="/article/<%= shark.shark_name.replace(/\s+/g, '_') %>" class="d-flex justify-content-center align-items-center"  style="font-size: 2rem;">READ MORE</a>
+                    </article>
+                <%  }); %>
                     
-                </article>
+
             </div>
         </div>
         <div>
