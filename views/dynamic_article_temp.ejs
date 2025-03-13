@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/css/bootstrap-5/bootstrap.css" rel="stylesheet" />
+    <link href="/css/stylesTemp.css" rel="stylesheet" />
+    <title>Home</title>
+</head>
+<body>
+    <main class="page-container">
+        <div>
+            <%- include("partials/navbar") %>
+        </div>
+
+        <div class="content">
+            <div class="shark-title mb-5">
+                <h1><%= shark_name %></h1>
+            </div>
+
+            <div class="article-card d-flex">
+                <div class="shark-image" style="background-image: url('<%= shark_image_base64 %>')">
+                    <div class="info-bar">
+                        <div class="info-bar-content">
+                            <p class="info-bar-title">Scientific Name</p>
+                            <p class="info-bar-subtitle"><%= scientific_name %></p>
+
+                            <p class="info-bar-title">Habitat</p>
+                            <p class="info-bar-subtitle">Shark Name</p>
+
+                            
+                            <p class="info-bar-title">Diet</p>
+                            <p class="info-bar-subtitle">Shark Name</p>
+
+                            <p class="info-bar-title">Length</p>
+                            <p class="info-bar-subtitle">Shark Name</p>
+
+                            <p class="info-bar-title">Weight</p>
+                            <p class="info-bar-subtitle">Shark Name</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shark-description">
+                <p><%= shark_content %></p>
+            </div>
+        </div>
+
+
+            
+        <div>
+            <%- include("partials/footer") %>
+        </div>
+        
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/multiverse/jquery.min.js"></script>
+    <script src="js/multiverse/jquery.poptrox.min.js"></script>
+    <script src="js/multiverse/browser.min.js"></script>
+    <script src="js/multiverse/breakpoints.min.js"></script>
+    <script src="js/multiverse/util.js"></script>
+    <script src="js/multiverse/main.js"></script>
+</body>
+</html>

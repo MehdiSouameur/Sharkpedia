@@ -79,11 +79,11 @@ main {
 
 main .content {
     flex-grow: 1;
-    background-color: bisque;
+    background-color: rgb(252, 252, 252);
 }
 
 a {
-    color: rgb(3, 255, 255) !important;
+    color: aqua !important;
 }
 
 a:hover {
@@ -128,9 +128,136 @@ a:hover {
 }
 
 .page-container {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(255, 255, 255);
     max-width: 2000px;
     width: 100%;
     height: 200px;
 }
+
+.shark-card{
+    background-image: url('/images/sharks/GreatWhite.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 500px;
+    width: 40%;
+    height: 20rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.shark-card .card-title{
+    flex:1;
+    background-color: rgba(255, 255, 255, 0.5);
+    color:black !important ;
+    width:100%;
+    height:10%;
+    font-weight: bolder;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.shark-card .card-middle{
+    width:100%;
+    height: 90%;
+}
+
+.shark-card .card-middle .card-button{
+    width:100%;
+    height:15%;
+}
+
+div.shark-card a {
+    height: 100%;
+    width:100%;
+    text-decoration: none;
+}
+
+
+
+.article-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width:100%;
+    height:30rem;
+}
+
+.article-card .shark-image{
+    background-image: url('/images/sharks/GreatWhite.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+    min-width: 1000px;
+    width:70%;
+    max-width:1800px;
+    height:100%;
+}
+
+.article-card .info-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    font-weight: bold;
+    height:100%;
+    width:100%;
+}
+
+.article-card .info-bar-content{
+    width: 20%;
+    height:100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.article-card .info-bar-title {
+    line-height: 1;
+    font-size: larger;
+    margin: 0;
+    padding: 0;
+    font:bolder;
+    color: aqua;
+}
+
+.article-card .info-bar-subtitle {
+    line-height: 1;
+    font-size: smaller;
+    margin: 0;
+    padding: 0;
+    margin-bottom:1rem ;
+    font:bolder;
+    color: rgb(255, 255, 255);
+}
+
+.shark-description {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.shark-description p{
+    font-size: x-large;
+    width:90%;
+
+}
+
+.minimal-input {
+    all: unset; /* Removes all default styling */
+    font-size: small; /* Add your own style */
+    color: rgb(248, 248, 248);    /* Text color */
+    font-family: Arial, sans-serif; /* Optional: Font settings */
+    margin-bottom: 1rem;
+}
+
+.minimal-input::placeholder {
+    color: rgb(135, 132, 132); /* Placeholder color */
+    font-style: italic; /* Optional placeholder style */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 

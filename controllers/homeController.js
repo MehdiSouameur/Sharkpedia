@@ -20,11 +20,20 @@ const getAllSharks = async () => {
     }
   };
 
+function chunkArray(array, chunkSize) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+      chunks.push(array.slice(i, i + chunkSize));
+  }
+  return chunks;
+}
+
 exports.home = async (req, res) => {
     const sharks = await getAllSharks();
-    console.log(sharks);
+    const sharkRows = chunkArray(sharks, 2); 
     res.render('index', { 
         sharks: sharks,
+        sharkRows: sharkRows,
         title: 'Home' 
     });
  };

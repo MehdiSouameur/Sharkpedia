@@ -21,13 +21,11 @@ exports.dynamic = async (req, res) => {
 
         console.log(entry); 
 
-        const response = await axios.get(entry.shark_image_url, { responseType: 'arraybuffer' });
-        const base64Image = Buffer.from(response.data, 'binary').toString('base64');
-
-        res.render("dynamic_article", {
+        res.render("dynamic_article_temp", {
             shark_name: entry.shark_name,
             scientific_name: entry.science_name,
-            shark_image_base64: base64Image,
+            shark_image_base64: entry.shark_image_url,
+            shark_content: entry.shark_content
         });
 
     } catch (error) {
@@ -38,14 +36,14 @@ exports.dynamic = async (req, res) => {
 
 // Create an entry page
 exports.create = (req,res) => {
-    res.render("create_entry");
+    res.render("create_entry_temp");
 }
 
 // Upload entry to firebase
 exports.firebasePost = async (req,res) => {
     try {
         const { shark_name, science_name, shark_content, shark_image_name } = req.body;
-
+        console.log(`Shark Name: ${shark_name}, Science Name: ${science_name}, Shark Content: ${shark_content}, Shark Image Name: ${shark_image_name}`);
         // Upload image to Storage and get the url
         let shark_image_url = "";
         if (req.files && req.files.shark_image) {
