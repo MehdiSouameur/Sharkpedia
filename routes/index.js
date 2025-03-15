@@ -6,6 +6,8 @@ const articleController = require('../controllers/articleController');
 
 router.get(routes.home, homeController.home);
 router.get(routes.pageNotFound, homeController.missing_page);
+router.get(routes.adminPage, homeController.admin);
+router.post(routes.authenticate, homeController.authenticate);
 
 router.get(routes.article, articleController.dynamic);
 router.get(routes.gallery, articleController.gallery);

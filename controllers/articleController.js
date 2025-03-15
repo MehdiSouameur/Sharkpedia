@@ -2,6 +2,7 @@ const axios = require("axios")
 const sharp = require("sharp");
 const routes = require("../config.js");
 const { db, storage } = require("../firebaseConfig")
+const { verifyIdToken } = require("./helpers.js");
 
 // Dynamically route to shark article
 exports.dynamic = async (req, res) => {
@@ -35,8 +36,14 @@ exports.dynamic = async (req, res) => {
 };
 
 // Create an entry page
-exports.create = (req,res) => {
-    res.render("create_entry_temp");
+exports.create = async (req,res) => {
+    const isAuth = await verifyIdToken(req,res);
+    console.log(`IsAuth?${isAuth}`);
+    if(isAuth){
+        res.render("create_entry_temp");
+    } else {
+        res.redirect("/admin")
+    }
 }
 
 // Upload entry to firebase

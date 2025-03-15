@@ -1,4 +1,5 @@
-const { db, storage } = require("../firebaseConfig")
+const { db, storage, admin } = require("../firebaseConfig")
+const { verifyIdToken } = require("./helpers.js");
 
 const getAllSharks = async () => {
     try {
@@ -41,6 +42,45 @@ exports.home = async (req, res) => {
  exports.missing_page = (req, res) => {
     res.render('article_notfound', { title: '404' });
  };
+
+ exports.admin = async (req,res) => {
+    const isAuth = await verifyIdToken(req,res);
+    console.log(`IsAuth?${isAuth}`);
+    if(!isAuth){
+        res.render("admin");
+    } else {
+        res.redirect("/article")
+    }
+ };
+
+ exports.authenticate = async (req,res) => {
+      try {
+        const id_token = req.cookies.firebaseIdToken; 
+
+        if (!id_token) {
+            return res.status(400).send('ID token is required');
+        }
+
+        // Verify the ID token using Firebase Admin SDK
+        const decodedToken = await admin.auth().verifyIdToken(id_token);
+
+        // You can now use the decodedToken to access user info
+        console.log('Decoded token:', decodedToken);
+
+        // You can send back user information or proceed with the request
+        res.json({
+            message: 'User authenticated successfully!',
+            user: decodedToken,
+        });
+
+    } catch (error) {
+        // If token is invalid or expired
+        console.error('Error verifying ID token:', error);
+        res.status(401).send('Unauthorized');
+    }
+};
+
+
 
  
  

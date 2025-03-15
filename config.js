@@ -6,6 +6,8 @@ const routes = {
     firebasePost: '/firebase-post',
     pageNotFound: '/missing_page',
     gallery: '/gallery',
+    adminPage: '/admin',
+    authenticate: '/firebase-authenticate'
 };
 
 module.exports = routes;

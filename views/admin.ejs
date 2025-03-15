@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap-5/bootstrap.css" rel="stylesheet" />
+    <link href="css/stylesTemp.css" rel="stylesheet" />
+    <title>Home</title>
+</head>
+<body>
+    <main class="page-container">
+
+        <div>
+            <%- include("partials/navbar") %>
+        </div>
+
+        <div class="content">
+
+            <div class="text-center m-5">
+                <form id="signin-form" class="form-signin d-flex align-items-center justify-content-center flex-column">
+
+                    <h1 class="h3 mb-3 font-weight-normal">Admin Sign in</h1>
+                    <label id="error-message" class="sr-only mb-3" style="color: rgb(252, 4, 4); font-size: smaller; display: none;">Incorrect details: Please try again</label>
+
+                    <label for="inputEmail" class="sr-only" style="color: rgb(30, 0, 255); font-weight: bolder;">Email address</label>
+                    <input type="email" id="inputEmail" name="user_email" class="form-control" placeholder="Email address" required="" autofocus="" style="width: 50%; min-width: 15rem;">
+
+                    <label for="inputPassword" class="sr-only" style="color: rgb(30, 0, 255); font-weight: bolder;">Password</label>
+                    <input type="password" id="inputPassword" name="user_pw" class="form-control mb-4" placeholder="Password" required="" style="width: 50%; min-width: 15rem;">
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+                </form>
+                
+              
+            
+            </div>
+            
+
+        </div>
+
+        <div>
+            <%- include("partials/footer") %>
+        </div>
+        
+    </main>
+
+    <!-- Scripts -->
+
+    <script type="module" src="js/auth.js"></script>
+</body>
+</html>
