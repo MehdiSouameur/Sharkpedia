@@ -25,9 +25,12 @@ app.use(routes.createEntry, indexRouter);
 app.use(routes.gallery, indexRouter);
 app.use(routes.pageNotFound, indexRouter);
 app.use(routes.firebasePost, indexRouter);
+app.use(routes.firebaseEdit, indexRouter);
+app.use(routes.firebaseDelete, indexRouter);
 app.use(routes.pageNotFound, indexRouter);
 app.use(routes.adminPage, indexRouter);
 app.use(routes.authenticate, indexRouter);
+app.use(routes.edit, indexRouter);
 
 app.listen(PORT, () => {
     console.log(`App running on http://localhost:${PORT}`);

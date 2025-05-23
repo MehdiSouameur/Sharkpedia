@@ -15,6 +15,17 @@
         </div>
 
         <div class="content">
+
+            <div class="d-flex justify-content-center align-items-center pt-3">
+                <% if (isAuth) { %>
+                    <a href="/article/edit/<%= shark_name.replace(/\s+/g, '_') %>" class="btn btn-dark rounded-pill px-4">Edit page</a>
+                    <form action="/article/firebase-delete/<%= shark_name.replace(/\s+/g, '_') %>" method="POST">
+                        <input type="hidden" name="shark_name" value="<%= shark_name.replace(/\s+/g, '_') %>">
+                        <button type="submit" class="ms-2 btn btn-danger rounded-pill px-4">Delete Page</button>
+                    </form>
+                <% } %>
+            </div>
+
             <div class="shark-title mb-5">
                 <h1><%= shark_name %></h1>
             </div>
