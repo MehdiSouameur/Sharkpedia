@@ -55,7 +55,11 @@
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-primary m-5" id="submit-button" style="font-size: larger;">Create Entry</button>
+                    <button class="btn btn-primary m-5 mb-2" id="submit-button" style="font-size: larger;">Create Entry</button>
+                </div>
+
+                <div id="loading-spinner" class="d-flex justify-content-center align-items-center mb-3" style="display: none !important;">
+                    Creating Page... <div class="loader"></div>
                 </div>
         </div>
 
@@ -142,6 +146,7 @@
         // SUBMIT logic
 
         document.getElementById('submit-button').addEventListener('click', async (event) => {
+            document.getElementById('loading-spinner').style.display = 'block';
             event.preventDefault(); // Prevent default form submission behavior
 
             // Gather input data

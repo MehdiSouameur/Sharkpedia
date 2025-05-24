@@ -1,8 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 body, html {
-    height: 100vh;
-    margin:0;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    line-height: 0;
+
 }
 
 .target {
@@ -69,8 +77,21 @@ container .right-bar .content{
 
 
 main {
-    flex:1;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+}
+
+main .push {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make sure footer stays at bottom */
+main > div:last-child {
+    margin-top: auto;
 }
 
 a {

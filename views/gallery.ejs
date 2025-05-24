@@ -11,13 +11,13 @@
 
     <title>Home</title>
 </head>
-<body>
-    <div>
-        <%- include("partials/navbar") %>
-    </div>
-    <main>
 
+<body>
+    <main>
         <div>
+            <%- include("partials/navbar") %>
+        </div>
+        <div class="push">
             <div id="main">
 
                 <% sharks.forEach(shark => { %>
@@ -31,12 +31,14 @@
                     </article>
                 <%  }); %>
                     
-
             </div>
+
         </div>
+        
         <div>
             <%- include("partials/footer") %>
         </div>
+
     </main>
 
     <!-- Scripts -->

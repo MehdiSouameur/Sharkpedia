@@ -28,20 +28,23 @@
                                 </div>
                                 <div class="info-bar-content">
 
-                                    <p class="info-bar-title">Scientific Name</p>
-                                    <input type="text" class="minimal-input" placeholder="Enter Name" name="title-box">
-        
                                     <p class="info-bar-title">Habitat</p>
-                                    <input type="text" class="minimal-input" placeholder="Enter Habitat" name="title-box">
-                                    
-                                    <p class="info-bar-title">Diet</p>
-                                    <input type="text" class="minimal-input" placeholder="Enter Diet" name="title-box">
+                                    <input type="text" id="range_input" class="minimal-input" placeholder="Enter Range" name="title-box" value="<%= range %>">
         
                                     <p class="info-bar-title">Length</p>
-                                    <input type="text" class="minimal-input" placeholder="Enter Length" name="title-box">
+                                    <input type="text" id="length_input" class="minimal-input" placeholder="Enter Length" name="title-box" value="<%= length %>">
 
                                     <p class="info-bar-title">Weight</p>
-                                    <input type="text" class="minimal-input" placeholder="Enter Weight" name="title-box">
+                                    <input type="text" id="weight_input" class="minimal-input" placeholder="Enter Weight" name="title-box" value="<%= weight %>">
+
+                                    <p class="info-bar-title">Lifespan</p>
+                                    <input type="text" id="lifespan_input" class="minimal-input" placeholder="Enter Lifespan" name="title-box" value="<%= lifespan %>">
+
+                                    <p class="info-bar-title">Speed</p>
+                                    <input type="text" id="speed_input" class="minimal-input" placeholder="Enter Speed" name="title-box" value="<%= speed %>">
+
+                                    <p class="info-bar-title">Conservation</p>
+                                    <input type="text" id="status_input" class="minimal-input" placeholder="Enter Status" name="title-box" value="<%= status %>">
 
 
                                 </div>
@@ -55,7 +58,11 @@
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-primary m-5" id="submit-button" style="font-size: larger;">Edit Entry</button>
+                    <button class="btn btn-primary m-5 mb-3" id="submit-button" style="font-size: larger;">Edit Entry</button>
+                </div>
+
+                <div id="loading-spinner" class="d-flex justify-content-center align-items-center mb-3" style="display: none !important;">
+                    Editing Page...<div class="loader"></div>
                 </div>
         </div>
 
@@ -141,44 +148,62 @@
 
         // SUBMIT logic
         document.getElementById('submit-button').addEventListener('click', async (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
+            document.getElementById('loading-spinner').style.display = 'block';
+            event.preventDefault(); // Prevent default form submission behavior
 
-        // Gather input data
-        const shark_name = document.getElementById("shark_name")?.innerText || '';
-        const science_name = document.getElementById("science_name")?.innerText || '';
-        const shark_image = document.getElementById("file-input").files[0]; // Get the selected file
-        const shark_content = document.getElementById("shark_content")?.innerText || '';
-        console.log(`Shark Name: ${shark_name}, Science Name: ${science_name}, Shark Image:`, shark_image, `Shark Content: ${shark_content}`);
+            // Gather input data
+            const shark_name = document.getElementById("shark_name")?.innerText || '';
+            const science_name = document.getElementById("science_name")?.innerText || '';
+            const shark_image = document.getElementById("file-input").files[0];
+            const shark_content = document.getElementById("shark_content").innerText || '';
+            const range = document.getElementById("range_input")?.value || '';
+            const status = document.getElementById("status_input")?.value || '';
+            const length = document.getElementById("length_input")?.value || '';
+            const weight = document.getElementById("weight_input")?.value || '';
+            const lifespan = document.getElementById("lifespan_input")?.value || '';
+            const speed = document.getElementById("speed_input")?.value || '';
 
-        // Create a FormData object for sending file and other data
-        const formData = new FormData();
-        formData.append('shark_name', shark_name);
-        formData.append('science_name', science_name);
-        formData.append('shark_content', shark_content);
-        if (shark_image) {
-            formData.append('shark_image', shark_image); // Append the file
-        }
+            console.log(`Shark Name: ${shark_name}, Science Name: ${science_name}, Shark Image:`, shark_image, 
+            `Range: ${range}, Diet: ${status}, Length: ${length}, Weight: ${weight}, Lifespan: ${lifespan}, Speed: ${speed}`);
 
-        try {
-            // Make the POST request using Fetch
-            const response = await fetch('/firebase-edit', {
-                method: 'POST',
-                body: formData // Pass FormData directly
-            });
 
-            if (response.ok) {
-                // Redirect to home page if successful
-                window.location.href = '/';
-            } else {
-                const errorData = await response.json();
-                console.error('Error response:', errorData);
-                alert(`Error: ${errorData.message || 'An error occurred!'}`);
+            // Create a FormData object for sending file and other data
+            const formData = new FormData();
+            formData.append('shark_name', shark_name);
+            formData.append('science_name', science_name);
+            formData.append('shark_content', shark_content);
+            formData.append('range', range)
+            formData.append('status', status)
+            formData.append('length', length)
+            formData.append('weight', weight)
+            formData.append('lifespan', lifespan)
+            formData.append('speed', speed)
+            if (shark_image) {
+                formData.append('shark_image', shark_image); // Append the file
             }
-        } catch (error) {
-            console.error('Request failed:', error);
-            alert(`Request failed: ${error.message}`);
-        }
-    });
+
+
+            try {
+                // Make the POST request using Fetch
+                const response = await fetch('/firebase-edit', {
+                    method: 'POST',
+                    body: formData // Pass FormData directly
+                });
+
+                if (response.ok) {
+                    // Redirect to home page if successful
+                    window.location.href = '/';
+                } else {
+                    const errorData = await response.json();
+                    console.error('Error response:', errorData);
+                    alert(`Error: ${errorData.message || 'An error occurred!'}`);
+                }
+            } catch (error) {
+                console.error('Request failed:', error);
+                alert(`Request failed: ${error.message}`);
+            }
+
+        });
 
     </script>
 </body>

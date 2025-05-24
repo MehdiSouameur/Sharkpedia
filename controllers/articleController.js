@@ -30,7 +30,13 @@ exports.dynamic = async (req, res) => {
             shark_image_base64: entry.shark_image_url,
             shark_content: entry.shark_content,
             isAuth: isAuth,
-            shark_id: shark_id
+            shark_id: shark_id,
+            habitat: entry.range,
+            length: entry.length,
+            weight: entry.weight,
+            lifespan: entry.lifespan,
+            speed: entry.speed,
+            status: entry.status
         });
 
     } catch (error) {
@@ -96,64 +102,71 @@ exports.firebasePost = async (req,res) => {
     }
 }
 
-exports.firebaseEdit = async (req,res) => {
+exports.firebaseEdit = async (req, res) => {
     try {
-        const { shark_name, science_name, shark_content, shark_image_name } = req.body;
-
-        // Upload image to Storage and get the url
-        let shark_image_url = "";
+        const { shark_name, science_name, shark_content, range, status, length, weight, speed, lifespan } = req.body;
         const shark_id = shark_name;
+
         const querySnapshot = await db.collection('sharks')
             .where('shark_name', '==', shark_id)
             .get();
-        
+
         if (!querySnapshot.empty) {
-            if (req.files && req.files.shark_image) {
+            const doc = querySnapshot.docs[0];
+            const docRef = doc.ref;
+
+            const updateData = {
+                shark_name: shark_name,
+                science_name: science_name,
+                shark_content: shark_content,
+                range: range,
+                status: status,
+                length: length,
+                weight: weight,
+                lifespan: lifespan,
+                speed: speed
+
+            };
+
+            // Only process image if a valid one is uploaded
+            if (
+                req.files &&
+                req.files.shark_image &&
+                req.files.shark_image.data &&
+                req.files.shark_image.data.length > 0
+            ) {
                 const sharkImage = req.files.shark_image;
                 const fileName = sharkImage.name;
                 const firebasefile = storage.file(fileName);
-    
+
                 await firebasefile.save(sharkImage.data, {
                     metadata: {
                         contentType: sharkImage.mimetype,
                     },
                 });
 
-                // Get download URL
                 const [url] = await firebasefile.getSignedUrl({
                     action: 'read',
-                    expires: '2100-01-01T00:00:00Z'
+                    expires: '2100-01-01T00:00:00Z',
                 });
-    
-                shark_image_url = url;
-    
-            } else {
-                console.log('No file uploaded.');
+
+                updateData.shark_image_url = url;
             }
 
-            const doc = querySnapshot.docs[0]; // Get the first document (assuming `shark_name` is unique)
-            const docRef = doc.ref; // Reference to the document
-        
-            // Update the document
-            await docRef.update({
-                shark_name: shark_name,
-                science_name: science_name,
-                shark_content: shark_content,
-                shark_image_url: shark_image_url,
-            });
-        
+            await docRef.update(updateData);
+
             console.log("Document updated successfully!");
         } else {
-            console.log(`No document found with the given shark_name: ${shark_id}`);;
+            console.log(`No document found with the given shark_name: ${shark_id}`);
         }
-        
+
         res.redirect('/');
-        
     } catch (e) {
-        console.error("Error adding document: ", e);
-        res.status(500).send("Error adding document");
+        console.error("Error updating document: ", e);
+        res.status(500).send("Error updating document");
     }
-}
+};
+
 
 exports.firebaseDelete = async (req, res) => {
     try {
@@ -237,7 +250,13 @@ exports.edit = async (req, res) => {
             shark_name: entry.shark_name,
             scientific_name: entry.science_name,
             shark_content: entry.shark_content,
-            shark_image_url: entry.shark_image_url
+            shark_image_url: entry.shark_image_url,
+            range: entry.range,
+            status: entry.status,
+            length: entry.length,
+            weight: entry.weight,
+            lifespan: entry.lifespan,
+            speed: entry.speed
         });
 
     } catch (error) {
