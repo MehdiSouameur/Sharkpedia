@@ -24,7 +24,7 @@ exports.dynamic = async (req, res) => {
 
         console.log(entry); 
 
-        res.render("dynamic_article_temp", {
+        res.render("dynamic_article", {
             shark_name: entry.shark_name,
             scientific_name: entry.science_name,
             shark_image_base64: entry.shark_image_url,
@@ -104,8 +104,8 @@ exports.firebasePost = async (req,res) => {
 
 exports.firebaseEdit = async (req, res) => {
     try {
-        const { shark_name, science_name, shark_content, range, status, length, weight, speed, lifespan } = req.body;
-        const shark_id = shark_name;
+        const { original_shark_name, shark_name, science_name, shark_content, range, status, length, weight, speed, lifespan } = req.body;
+        const shark_id = original_shark_name;
 
         const querySnapshot = await db.collection('sharks')
             .where('shark_name', '==', shark_id)
@@ -125,7 +125,6 @@ exports.firebaseEdit = async (req, res) => {
                 weight: weight,
                 lifespan: lifespan,
                 speed: speed
-
             };
 
             // Only process image if a valid one is uploaded

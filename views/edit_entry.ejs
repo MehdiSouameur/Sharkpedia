@@ -54,8 +54,9 @@
                 </div>
 
                 <div class="shark-description">
-                    <p contenteditable="true" id="shark_content" ><%= shark_content %></p>
+                    <textarea id="shark_content" rows="10" cols="50"></textarea>    
                 </div>
+
 
                 <div class="d-flex justify-content-center align-items-center">
                     <button class="btn btn-primary m-5 mb-3" id="submit-button" style="font-size: larger;">Edit Entry</button>
@@ -66,8 +67,8 @@
                 </div>
         </div>
 
+        <input type="hidden" id="original_shark_name" value="<%= shark_name %>">
 
-            
         <div>
             <%- include("partials/footer") %>
         </div>
@@ -85,11 +86,18 @@
     <script src="js/multiverse/util.js"></script>
     <script src="js/multiverse/main.js"></script>
 
-    <script>
+    <script>    
+        
+        // Populate content area.
+        const sharkContent = '<%= JSON.stringify(shark_content) %>';
+
+        const cleanedSharkContent = sharkContent.slice(1, -2);
+        document.getElementById("shark_content").value = cleanedSharkContent;
+
         // Image box management
         const fileInput = document.getElementById('file-input');
         const sharkImageDiv = document.querySelector('.shark-image');
-
+        
         fileInput.addEventListener('change', (event) => {
             const file = event.target.files[0]; // Get the selected file
             if (file) {
@@ -152,10 +160,13 @@
             event.preventDefault(); // Prevent default form submission behavior
 
             // Gather input data
+            const original_shark_name = document.getElementById("original_shark_name").value;
             const shark_name = document.getElementById("shark_name")?.innerText || '';
             const science_name = document.getElementById("science_name")?.innerText || '';
             const shark_image = document.getElementById("file-input").files[0];
-            const shark_content = document.getElementById("shark_content").innerText || '';
+
+            const content = document.getElementById("shark_content").value || '';
+
             const range = document.getElementById("range_input")?.value || '';
             const status = document.getElementById("status_input")?.value || '';
             const length = document.getElementById("length_input")?.value || '';
@@ -169,9 +180,10 @@
 
             // Create a FormData object for sending file and other data
             const formData = new FormData();
+            formData.append('original_shark_name', original_shark_name)
             formData.append('shark_name', shark_name);
             formData.append('science_name', science_name);
-            formData.append('shark_content', shark_content);
+            formData.append('shark_content', content);
             formData.append('range', range)
             formData.append('status', status)
             formData.append('length', length)
@@ -182,7 +194,7 @@
                 formData.append('shark_image', shark_image); // Append the file
             }
 
-
+            
             try {
                 // Make the POST request using Fetch
                 const response = await fetch('/firebase-edit', {
@@ -202,6 +214,7 @@
                 console.error('Request failed:', error);
                 alert(`Request failed: ${error.message}`);
             }
+
 
         });
 

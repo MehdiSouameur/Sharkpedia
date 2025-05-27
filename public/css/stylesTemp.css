@@ -232,18 +232,36 @@ div.shark-card a {
     margin-bottom:2rem ;
     font:bolder;
     color: rgb(255, 255, 255);
+    text-align: center;
 }
 
 .shark-description {
     margin-top: 5rem;
     display: flex;
     justify-content: center;
+    margin-bottom: 4rem;
 }
+
+
+.shark-description textarea {
+    width: 80%; /* Adjusts the width to fill the container */
+    height: 15rem; /* Sets the height */
+    font-size: 18px; /* Adjusts the text size */
+    resize: vertical; /* Allows the user to resize the textarea vertically */
+    padding: 10px; /* Adds padding inside the textarea */
+    border: 1px solid #ccc; /* Adds a border */
+    border-radius: 4px; /* Rounds the corners */
+}
+
+.shark-description .shark-content{
+    width: 60%;
+    font-size: 12px !important;
+}
+
 
 .shark-description p{
     font-size: x-large;
     width:90%;
-
 }
 
 .minimal-input {

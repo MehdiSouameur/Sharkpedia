@@ -6,6 +6,7 @@
 
     <link href="/css/bootstrap-5/bootstrap.css" rel="stylesheet" />
     <link href="/css/stylesTemp.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -37,7 +38,7 @@
                     <div class="info-bar">
                         <div class="info-bar-content">
 
-                            <p class="info-bar-title">habitat</p>
+                            <p class="info-bar-title">Habitat</p>
                             <p class="info-bar-subtitle"><%= habitat %></p>
 
                             <p class="info-bar-title">Length</p>
@@ -61,7 +62,7 @@
             </div>
 
             <div class="shark-description">
-                <p><%= shark_content %></p>
+                <div id="shark-content" class="shark-content"></div>
             </div>
         </div>
 
@@ -73,12 +74,22 @@
         
     </main>
 
-    <!-- Scripts -->
     <script src="js/multiverse/jquery.min.js"></script>
     <script src="js/multiverse/jquery.poptrox.min.js"></script>
     <script src="js/multiverse/browser.min.js"></script>
     <script src="js/multiverse/breakpoints.min.js"></script>
     <script src="js/multiverse/util.js"></script>
     <script src="js/multiverse/main.js"></script>
+    <!-- Scripts -->
+     <script>
+
+            const sharkContent = '<%- JSON.stringify(shark_content) %>';
+            const cleanedSharkContent = sharkContent.slice(1, -1);
+            const html = marked.parse(cleanedSharkContent);
+            console.log(cleanedSharkContent);
+            document.getElementById('shark-content').innerHTML = html;
+
+
+     </script>
 </body>
 </html>
