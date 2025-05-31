@@ -1,0 +1,21 @@
+[debug] [2025-05-31T12:48:02.318Z] ----------------------------------------------------------------------
+[debug] [2025-05-31T12:48:02.319Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mehdi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-05-31T12:48:02.320Z] CLI Version:   14.5.1
+[debug] [2025-05-31T12:48:02.320Z] Platform:      win32
+[debug] [2025-05-31T12:48:02.320Z] Node Version:  v22.14.0
+[debug] [2025-05-31T12:48:02.320Z] Time:          Sat May 31 2025 13:48:02 GMT+0100 (British Summer Time)
+[debug] [2025-05-31T12:48:02.320Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-31T12:48:02.323Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-31T12:48:02.323Z] > authorizing via signed-in user (mehdisouameur.ms@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mehdi\Local Documents\Personal Projects\SharkpediaV1
+

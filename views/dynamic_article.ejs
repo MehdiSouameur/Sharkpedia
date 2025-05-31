@@ -83,10 +83,9 @@
     <!-- Scripts -->
      <script>
 
-            const sharkContent = '<%- JSON.stringify(shark_content) %>';
-            const cleanedSharkContent = sharkContent.slice(1, -1);
-            const html = marked.parse(cleanedSharkContent);
-            console.log(cleanedSharkContent);
+            const sharkContent = `<%- shark_content %>`;
+            const html = marked.parse(sharkContent);
+            console.log(sharkContent);
             document.getElementById('shark-content').innerHTML = html;
 
 

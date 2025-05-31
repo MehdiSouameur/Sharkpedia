@@ -89,10 +89,8 @@
     <script>    
         
         // Populate content area.
-        const sharkContent = '<%= JSON.stringify(shark_content) %>';
-
-        const cleanedSharkContent = sharkContent.slice(1, -2);
-        document.getElementById("shark_content").value = cleanedSharkContent;
+        const sharkContent = `<%- shark_content %>`;
+        document.getElementById("shark_content").value = sharkContent;
 
         // Image box management
         const fileInput = document.getElementById('file-input');

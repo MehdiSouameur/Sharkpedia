@@ -14,44 +14,48 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+let isSubmitting = false;
+
 document.getElementById("signin-form").addEventListener("submit", async (event) => {
-                        
-    event.preventDefault();  // Prevent the default form submission behavior
+    event.preventDefault();
+
+    if (isSubmitting) return;
+    isSubmitting = true;
 
     const email = document.getElementById("inputEmail").value;
     const password = document.getElementById("inputPassword").value;
+    const errorMessage = document.getElementById('error-message');
+    const submitButton = document.querySelector("#signin-form button[type='submit']");
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Successfully signed in
-            console.log("Login successful!");
-            console.log("User details:", userCredential.user);
+    submitButton.disabled = true;
+    submitButton.textContent = "Signing in...";
 
-            // Get the ID token (similar to session ID)
-            userCredential.user.getIdToken()
-                .then((idToken) => {
-                    // Now you have the Firebase ID token
-                    console.log("ID Token (Session ID):", idToken);
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        console.log("Login successful!");
+        console.log("User details:", userCredential.user);
 
-                    const expiresIn = new Date(Date.now() + 3600 * 1000).toUTCString(); // 1 hour expiration
-                    document.cookie = `firebaseIdToken=${idToken}; expires=${expiresIn}; path=/; Secure; SameSite=Strict`;
-                    window.location.href = "/article"
+        const idToken = await userCredential.user.getIdToken();
 
-                })
-                .catch((error) => {
-                    console.error("Error getting ID token:", error);
-                    const errorMessage = document.getElementById('error-message');
-                    errorMessage.style.display = 'none';  // Hide the error message
-                });
-        })
-        .catch((error) => {
-            // Failed to sign in
-            console.error("Login failed!");
-            console.error("Error Code:", error.code);
-            console.error("Error Message:", error.message);
-            console.error("Setting error");
-            const errorMessage = document.getElementById('error-message');
-            errorMessage.style.display = 'block';  // Hide the error message
-        });
+        const expiresIn = new Date(Date.now() + 3600 * 1000).toUTCString();
+        document.cookie = `firebaseIdToken=${idToken}; expires=${expiresIn}; path=/; Secure; SameSite=Strict`;
 
-    });
+        window.location.href = "/article";
+    } catch (error) {
+        console.error("Login failed!");
+        console.error("Error Code:", error.code);
+        console.error("Error Message:", error.message);
+
+        if (error.code === 'auth/too-many-requests') {
+            errorMessage.textContent = "Too many attempts. Please try again later.";
+        } else {
+            errorMessage.textContent = "Login failed. Check your credentials and try again.";
+        }
+
+        errorMessage.style.display = 'block';
+    } finally {
+        isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = "Sign In";
+    }
+});
