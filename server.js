@@ -5,9 +5,7 @@ const indexRouter = require('./routes/index');
 const removeTrailingSlash = require('./middleware/trailingSlash'); 
 const app = express();
 const PORT = process.env.PORT || 3000;  // Use Heroku's port, fallback to 3000 locally
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}`);
-});
+
 
 require('dotenv').config();
 
@@ -39,5 +37,6 @@ app.use(routes.authenticate, indexRouter);
 app.use(routes.edit, indexRouter);
 
 app.listen(PORT, () => {
-    console.log(`App running on http://localhost:${PORT}`);
+    console.log(`App running on Port ${PORT}`);
+    console.log(`If on local: http://localhost:${PORT}`);
 })
