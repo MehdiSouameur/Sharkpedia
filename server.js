@@ -5,6 +5,8 @@ const indexRouter = require('./routes/index');
 const removeTrailingSlash = require('./middleware/trailingSlash'); 
 const app = express();
 const PORT = 3000;
+require('dotenv').config();
+
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
