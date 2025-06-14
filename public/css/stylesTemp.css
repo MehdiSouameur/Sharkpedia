@@ -112,6 +112,12 @@ a:hover {
     font-size: 3.5rem; /* Adjust the font size as needed */
 }
 
+@media (max-width: 600px){
+    .cover .shadow-text{
+        font-size: 40px;
+    }
+}
+
 .intro {
     color:black;
     font-weight: bolder;
@@ -139,10 +145,19 @@ a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-width: 500px;
+    min-width: auto;
     width: 40%;
     height: 20rem;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/* On smaller screens (below md = 768px), set width to 100% */
+@media (max-width: 767.98px) {
+    .shark-card {
+        width: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .shark-card .card-title{
@@ -188,7 +203,7 @@ div.shark-card a {
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
-    min-width: 1000px;
+    min-width: unset;
     width:70%;
     max-width:1800px;
     height:100%;
@@ -235,6 +250,30 @@ div.shark-card a {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+  .article-card {
+    flex-direction: column;
+    height: auto; /* Let content determine height */
+  }
+
+  .article-card .shark-image {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .article-card .info-bar-title {
+    font-size: 8px;
+    margin-bottom: 0.1rem;
+    }
+
+  .article-card .info-bar-subtitle {
+    font-size: 8px;
+    margin-bottom:0.5rem ;
+  }
+
+}
+
+
 .shark-description {
     margin-top: 5rem;
     display: flex;
@@ -248,21 +287,30 @@ div.shark-card a {
     height: 15rem; /* Sets the height */
     font-size: 18px; /* Adjusts the text size */
     resize: vertical; /* Allows the user to resize the textarea vertically */
-    padding: 10px; /* Adds padding inside the textarea */
-    border: 1px solid #ccc; /* Adds a border */
-    border-radius: 4px; /* Rounds the corners */
+    padding: 10px; /#ccc; /* Adds a border */
+    border-radius: 4px; /* Rounds the co* Adds padding inside the textarea */
+    border: 1px solid rners */
 }
+
 
 .shark-description .shark-content{
     width: 60%;
-    font-size: 12px !important;
+    font-size: 20px;
 }
 
 
 .shark-description p{
-    font-size: x-large;
     width:90%;
 }
+
+@media (max-width: 600px) {
+    .shark-description,
+    .shark-description .shark-content {
+        font-size: 16px;
+    }
+}
+
+
 
 .minimal-input {
     all: unset; /* Removes all default styling */
@@ -274,10 +322,16 @@ div.shark-card a {
 }
 
 .minimal-input::placeholder {
-    color: rgb(135, 132, 132); /* Placeholder color */
+    color: rgba(255, 255, 255, 0.7); /* Placeholder color */
     font-style: italic; /* Optional placeholder style */
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px){
+    .minimal-input{
+        font-size: 8px;
+    }
 }
 
 .loader {

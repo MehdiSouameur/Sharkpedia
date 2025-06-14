@@ -10,7 +10,6 @@ body, html {
     flex-direction: column;
     overflow-x: hidden;
     line-height: 0;
-
 }
 
 .target {
